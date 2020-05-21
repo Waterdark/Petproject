@@ -19,3 +19,23 @@ from django.urls import path
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]
+
+# include() использован чтобы добавлять URL из каталога приложения 
+from django.urls import include
+from django.urls import path
+urlpatterns += [
+     path('catalog/', include('catalog.urls')),
+]
+
+# Добавлены URL соотношения, чтобы перенаправить запросы с корневового URL, на URL приложения 
+from django.views.generic import RedirectView
+urlpatterns += [
+    path('', RedirectView.as_view(url='/catalog/', permanent=True)),
+]
+
+# static() использован чтобы добавить соотношения для статических файлов
+# Только на период разработки
+from django.conf import settings
+from django.conf.urls.static import static
+
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
