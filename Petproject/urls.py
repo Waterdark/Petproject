@@ -19,7 +19,7 @@ from django.urls import path
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]
-
+# Пошаговое добавление в данном случае необходимо для пошагового разделения для понимания
 # include() использован чтобы добавлять URL из каталога приложения 
 from django.urls import include
 from django.urls import path
