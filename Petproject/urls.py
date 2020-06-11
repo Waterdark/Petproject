@@ -15,13 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+# include() использован чтобы добавлять URL из каталога приложения 
+from django.urls import include
+# из модуля views импортировать функцию hello. символ точки говорит о том, что модуль views находится в той же папке, что и файл urls.py
+# from .views import hello
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('blog/', include('blog.urls'))
 ]
 # Пошаговое добавление в данном случае необходимо для пошагового разделения для понимания
-# include() использован чтобы добавлять URL из каталога приложения 
-from django.urls import include
+
 from django.urls import path
 urlpatterns += [
      path('catalog/', include('catalog.urls')),
