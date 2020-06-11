@@ -6,9 +6,12 @@
 {%endblock%}
 
 {%block content%}
-    {%for name in names%}
-        <p>
-            {{ name }}
-        </p>
-    {%endfor%}
+<h1 class="mb-5">Данные списка:</h1>
+{%for name in names%}   
+<p>
+        {{ name }}
+    </p>
+
+{%endfor%}
+
 {%endblock%}
