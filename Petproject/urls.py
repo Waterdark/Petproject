@@ -15,32 +15,36 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-# include() использован чтобы добавлять URL из каталога приложения 
-from django.urls import include
-# из модуля views импортировать функцию hello. символ точки говорит о том, что модуль views находится в той же папке, что и файл urls.py
-# from .views import hello
 
-
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('blog/', include('blog.urls'))
-]
-# Пошаговое добавление в данном случае необходимо для пошагового разделения для понимания
-
-from django.urls import path
-urlpatterns += [
-     path('catalog/', include('catalog.urls')),
-]
-
-# Добавлены URL соотношения, чтобы перенаправить запросы с корневового URL, на URL приложения 
 from django.views.generic import RedirectView
-urlpatterns += [
-    path('', RedirectView.as_view(url='/catalog/', permanent=True)),
-]
+from django.urls import include
 
-# static() использован чтобы добавить соотношения для статических файлов
-# Только на период разработки
 from django.conf import settings
 from django.conf.urls.static import static
 
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('blog/', include('blog.urls')),
+    path('catalog/', include('catalog.urls')),
+    path('', RedirectView.as_view(url='/catalog/', permanent=True)),
+]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+# include() использован чтобы добавлять URL из каталога приложения 
+# из модуля views импортировать функцию hello. символ точки говорит о том, что модуль views находится в той же папке, что и файл urls.py
+# from .views import hello
+# Пошаговое добавление в данном случае необходимо для пошагового разделения для понимания
+# Добавлены URL соотношения, чтобы перенаправить запросы с корневового URL, на URL приложения
+# static() использован чтобы добавить соотношения для статических файлов
+# Только на период разработки
+
+
+
+
+
+
+
+
+
+
+

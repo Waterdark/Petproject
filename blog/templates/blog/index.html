@@ -2,16 +2,18 @@
 
 
 {%block title%}
-Какое-то наполнение нашего блога
+Тестовый блог
 {%endblock%}
 
 {%block content%}
-<h1 class="mb-5">Данные списка:</h1>
+<h1 class="mb-5"><center>Данные списка:</center></h1>
 {%for name in names%}   
 <p>
-        {{ name }}
+        <center>{{ name }}</center>
+        
     </p>
-
+    
 {%endfor%}
-
+{{ hello }}
+<br>Смысл жизни: {{ number }}
 {%endblock%}

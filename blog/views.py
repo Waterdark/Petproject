@@ -5,4 +5,5 @@ from django.shortcuts import render
 def posts_list(request):
     n = ['Pasha', 'Sasha','Masha','Anna','Vova']
     hello = 'Hello Chel!'
-    return render(request, 'blog/index.html', context={'names': n, 'hello': hello})
+    number = 42
+    return render(request, 'blog/index.html', context={'names': n, 'hello': hello, 'number': number})
