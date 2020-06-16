@@ -27,8 +27,7 @@ urlpatterns = [
     path('blog/', include('blog.urls')),
     path('catalog/', include('catalog.urls')),
     path('', RedirectView.as_view(url='/catalog/', permanent=True)),
-]
-urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 # include() использован чтобы добавлять URL из каталога приложения 
 # из модуля views импортировать функцию hello. символ точки говорит о том, что модуль views находится в той же папке, что и файл urls.py
