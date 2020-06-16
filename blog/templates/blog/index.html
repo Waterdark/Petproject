@@ -1,19 +1,28 @@
 {%extends 'blog/base_blog.html'%}
 
 
+
 {%block title%}
 Тестовый блог
 {%endblock%}
 
 {%block content%}
-<h1 class="mb-5"><center>Данные списка:</center></h1>
-{%for name in names%}   
-<p>
-        <center>{{ name }}</center>
-        
-    </p>
+<h1 class="mb-5">Данные списка:</h1>
+{%for post in posts%}   
+<div class="card">
+    <div class="card-header">
+       {{ post.date_pub }}
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">{{ post.title }}</h5>
+        <p class="card-text">{{ post.body|truncatewords:15 }}</p>
+        <a href="{{ post.get_absolute_url }}" class="btn btn-light">Read</a>
+    </div>
+    </div>
     
 {%endfor%}
 {{ hello }}
 <br>Смысл жизни: {{ number }}
+<a href="{% url 'index' %}">КАТАЛОЖИЩЕ!</a>
 {%endblock%}
+
